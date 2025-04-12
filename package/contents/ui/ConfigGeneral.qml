@@ -35,10 +35,9 @@ Item {
             }
         }
 
-        function relogin() {
-            if (!authFlow.visible) authFlow.show();
-            webView.url = "https://id.twitch.tv/oauth2/authorize?client_id=yoilemo3cudfjaqm6ukbew2g2mgm2v&redirect_uri=http://localhost&response_type=token&scope=user%3Aread%3Afollows";
-        }
+	function relogin() {
+    	Qt.openUrlExternally("https://id.twitch.tv/oauth2/authorize?client_id=yoilemo3cudfjaqm6ukbew2g2mgm2v&redirect_uri=http://localhost&response_type=token&scope=user%3Aread%3Afollows");
+	}
     }
 
     ColumnLayout {
@@ -57,6 +56,23 @@ Item {
                 }
             }
         }
+
+	RowLayout {
+          spacing: 8
+    	  TextField {
+	        id: manualToken
+        	placeholderText: "Paste your Twitch token here"
+        	Layout.fillWidth: true
+    	  }
+    	  Button {
+        	text: "Save Token"
+          onClicked: {
+            authFlow.cfg_twitchToken = manualToken.text;
+            console.log("Manually pasted token: " + manualToken.text);
+            Plasmoid.configuration.twitchToken = authFlow.cfg_twitchToken;
+           }
+         }
+       }
 
         RowLayout {
 		    Label {
