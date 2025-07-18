@@ -3,9 +3,9 @@
 	<kcfgfile name=""/>
 	<group name="General">
 		<entry name="updateInterval" type="Int">
-			<default>10</default>
-			<min>20</min>
-      		<max>990</max>
+                <default>10</default>
+                <min>1</min>
+                <max>60</max>
 		</entry>
         <entry name="twitchToken" type="String">
 			<default></default>
