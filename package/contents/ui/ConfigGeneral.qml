@@ -59,16 +59,26 @@ Item {
 
 	RowLayout {
           spacing: 8
-    	  TextField {
-	        id: manualToken
-        	placeholderText: "Paste your Twitch token here"
-        	Layout.fillWidth: true
-    	  }
-    	  Button {
-        	text: "Save Token"
+          TextField {
+                id: manualToken
+                placeholderText: "Paste your Twitch token or URL here"
+                Layout.fillWidth: true
+          }
+          Button {
+                text: "Save Token"
           onClicked: {
-            authFlow.cfg_twitchToken = manualToken.text;
-            console.log("Manually pasted token: " + manualToken.text);
+            var input = manualToken.text.trim();
+            if (input.indexOf("access_token=") !== -1) {
+                var tokenData = input.substring(input.indexOf("access_token=") + "access_token=".length);
+                var ampIndex = tokenData.indexOf("&");
+                if (ampIndex !== -1) {
+                    tokenData = tokenData.substring(0, ampIndex);
+                }
+                authFlow.cfg_twitchToken = tokenData;
+            } else {
+                authFlow.cfg_twitchToken = input;
+            }
+            console.log("Manually pasted token: " + authFlow.cfg_twitchToken);
             Plasmoid.configuration.twitchToken = authFlow.cfg_twitchToken;
            }
          }

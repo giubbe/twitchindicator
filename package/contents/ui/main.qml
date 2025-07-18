@@ -32,7 +32,7 @@ PlasmoidItem {
 				cb(body);
 			}
 			else {
-				log("Failed to execure the request: status code is not 200", {method: method, url: url, options: options, request: xhr});
+                                log("Failed to execute the request: status code is not 200", {method: method, url: url, options: options, request: xhr});
 			}
 		}
 		xhr.onerror = function(e) {
