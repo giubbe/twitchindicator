@@ -35,7 +35,7 @@ PlasmoidItem {
 			}
 		}
 		xhr.onerror = function(e) {
-			log("Error executing the request: network error", {method: method, url: url, options: options});
+			log("Error executing the request: network error", {method: method, url: url});
             retryConnection.restart();
 		}
 		if (options.responseType) xhr.responseType = options.responseType;
