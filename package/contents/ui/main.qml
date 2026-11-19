@@ -26,17 +26,16 @@ PlasmoidItem {
 		xhr.open(method, url, true);
 		xhr.onload = function (e) {
             console.log(xhr.status);
-            console.log(xhr.responseText);
 		    if (xhr.status == 200) {
 				let body = xhr.response;
 				cb(body);
 			}
 			else {
-                                log("Failed to execute the request: status code is not 200", {method: method, url: url, options: options, request: xhr});
+                log("Failed to execute the request: status code is not 200", {method: method, url: url});
 			}
 		}
 		xhr.onerror = function(e) {
-			log("Error executing the request: network error", {method: method, url: url, options: options});
+			log("Error executing the request: network error", {method: method, url: url});
             retryConnection.restart();
 		}
 		if (options.responseType) xhr.responseType = options.responseType;
@@ -97,7 +96,7 @@ PlasmoidItem {
     compactRepresentation: MouseArea {
         Layout.preferredWidth: intRow.implicitWidth
         Layout.minimumWidth: intRow.implicitWidth
-        Layout.preferredHeight: 32
+        Layout.fillHeight: true
         onClicked: root.expanded = !root.expanded;
 
         Row {
@@ -134,8 +133,12 @@ PlasmoidItem {
     preferredRepresentation: compactRepresentation
     
     fullRepresentation: Item {
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 30
-        Layout.preferredHeight: Screen.height * 0.45
+        // Only the initial size is suggested. Plasma controls and persists
+        // the actual popup geometry after the user resizes it.
+        implicitWidth: Kirigami.Units.gridUnit * 30
+        implicitHeight: Kirigami.Units.gridUnit * 22
+        Layout.minimumWidth: 0
+        Layout.minimumHeight: 0
 
         Component {
                 id: streamDelegate

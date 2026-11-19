@@ -30,7 +30,6 @@ Item {
                     let token = tokenData.substring(0, idTokenStart);
                     authFlow.cfg_twitchToken = token;
                     authFlow.visible = false;
-                    console.log("New token: "+token);
                 }
             }
         }
@@ -78,7 +77,6 @@ Item {
             } else {
                 authFlow.cfg_twitchToken = input;
             }
-            console.log("Manually pasted token: " + authFlow.cfg_twitchToken);
             Plasmoid.configuration.twitchToken = authFlow.cfg_twitchToken;
            }
          }
