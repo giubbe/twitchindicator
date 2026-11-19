@@ -3,6 +3,9 @@
     "KPlugin": {
         "Authors": [
             {
+                "Name": "giubbe"
+            },
+            {
                 "Email": "markovs.i.mail@gmail.com",
                 "Name": "Sergei Markov"
             }
@@ -13,8 +16,8 @@
         "Id": "org.github.komorebi.twitchindicator",
         "License": "WTFPL",
         "Name": "Twitch Indicator",
-        "Version": "0.6.1",
-        "Website": "https://github.com/komorebithrowsatable/twitchindicator"
+        "Version": "0.6.2",
+        "Website": "https://github.com/giubbe/twitchindicator"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-API": "declarativeappletscript",
