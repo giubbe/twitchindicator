@@ -23,3 +23,16 @@ Resize the open Twitch popup by dragging its border (your window manager's
 resize shortcut may also work). The initial size is only a default: Plasma
 stores the actual popup size when the popup closes. The compact panel view
 follows the panel height instead of requesting a fixed 32-pixel height.
+
+## Building a release package
+
+Requires Bash, Python 3, and `zip`. From the repository root, run:
+
+```bash
+bash build.sh
+```
+
+The script reads the version from `package/metadata.json` and writes
+`twitchindicator-<version>.plasmoid` in the repository root, for example
+`twitchindicator-0.6.2.plasmoid`. It replaces an existing archive with the
+same name after regenerating it.
